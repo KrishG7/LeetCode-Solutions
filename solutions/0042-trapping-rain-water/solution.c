@@ -1,0 +1,25 @@
+int trap(int* height, int heightSize) {
+    int stored = 0;
+    int left = 0;
+    int right = heightSize - 1;
+    int left_max = 0;
+    int right_max = 0;
+    while (left < right) {
+        if (height[left] < height[right]) {
+            if (height[left] >= left_max) {
+                left_max = height[left];
+            } else {
+                stored += left_max - height[left];
+            }
+            left++;
+        } else {
+            if (height[right] >= right_max) {
+                right_max = height[right];
+            } else {
+                stored += right_max - height[right];
+            }
+            right--;
+        }
+    }
+    return stored;
+}
