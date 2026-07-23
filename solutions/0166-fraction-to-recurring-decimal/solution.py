@@ -19,16 +19,15 @@ class Solution:
 
         res.append(".")
 
-        seen_remainders = {}
+        rem_map = {}
 
         while rem != 0:
-            if rem in seen_remainders:
-                res.insert(seen_remainders[rem], "(")
+            if rem in rem_map:
+                res.insert(rem_map[rem], "(")
                 res.append(")")
                 break
 
-            seen_remainders[rem] = len(res)
-
+            rem_map[rem] = len(res)
             rem *= 10
             res.append(str(rem // den))
             rem %= den
